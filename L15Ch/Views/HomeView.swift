@@ -14,13 +14,14 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVStack {
+                LazyVStack (spacing: 40) {
                     ForEach(model.books) {book in
                         BookViewRow(id: book.id, title: book.author, author: book.author, isFavourite: book.isFavourite, currentPage: book.currentPage, rating: book.rating, content: book.content)
                     }
                 }
-                
+                .padding(.top, 20)
             }
+            .navigationBarTitle("Library overview")
         }
     }
 }
@@ -28,5 +29,6 @@ struct HomeView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(BookModel())
     }
 }

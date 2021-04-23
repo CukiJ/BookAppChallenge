@@ -26,13 +26,18 @@ struct BookViewRow: View {
                 .cornerRadius(10)
                 .shadow(radius: 20)
             
-            VStack {
+            VStack (alignment: .leading){
                 Text(title)
+                    .font(.title)
+                    .bold()
+                    .padding(5)
                 Text(author)
+                    .italic()
+                    .font(.body)
                 Image("cover" + String(id))
                     .resizable()
                     .scaledToFit()
-                    .padding()
+                    .padding([.horizontal,.bottom], 10)
             }
             .frame(width: 350, height: 500, alignment: .center)
         }
