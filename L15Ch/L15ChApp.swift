@@ -11,7 +11,8 @@ import SwiftUI
 struct L15ChApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(BookModel())
         }
     }
 }
