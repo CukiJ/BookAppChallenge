@@ -34,10 +34,13 @@ struct BookViewRow: View {
                 Text(author)
                     .italic()
                     .font(.body)
+                    .padding(.horizontal, 5)
                 Image("cover" + String(id))
                     .resizable()
                     .scaledToFit()
                     .padding([.horizontal,.bottom], 10)
+                    .frame(width: 320, height: 380)
+                    
             }
             .frame(width: 350, height: 500, alignment: .center)
         }
@@ -47,6 +50,6 @@ struct BookViewRow: View {
 
 struct BookViewRow_Previews: PreviewProvider {
     static var previews: some View {
-        BookViewRow(id: 1, title: "Test název", author: "Já", isFavourite: false, currentPage: 1, rating: 3, content:["Strana 1","Strana 2"])
+        BookViewRow(id: 2, title: "Test název", author: "Já", isFavourite: false, currentPage: 1, rating: 3, content:["Strana 1","Strana 2"])
     }
 }
