@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct BookDetailView: View {
-    var title:String
-    var image:String
-    @State var isFavourite: Bool
-    @State var rating: Int
-    @State var star:String
+    
+    @State var book:Book
     
     var body: some View {
         VStack (spacing: 25){
             Text("Read Now!")
                 .font(.title)
-            //Button
+            //Navigation Link
             
-            Image(image)
+            Image("cover\(book.id)")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200)
@@ -30,15 +27,24 @@ struct BookDetailView: View {
             Button(action: {
                 checkIfRated()
             }, label: {
-                Image(systemName: "\(star)")
+                if book.isFavourite == true {
+                Image(systemName: "star.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30)
                     .foregroundColor(.yellow)
+                }
+                else {
+                    Image(systemName: "star")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30)
+                        .foregroundColor(.yellow)
+                }
             })
             
-            Text("Rate \(title)")
-            Picker("", selection: $rating) {
+            Text("Rate \(book.title)")
+            Picker("Rate", selection: $book.rating) {
                 Text("1").tag(1)
                 Text("2").tag(2)
                 Text("3").tag(3)
@@ -50,19 +56,19 @@ struct BookDetailView: View {
         }
     }
     func checkIfRated() {
-        if isFavourite {
-            star = "star"
-            isFavourite = false
+        // Nefunguje - proč?
+        if book.isFavourite {
+            book.isFavourite = false
         }
         else {
-            star = "star.fill"
-            isFavourite = true
+            book.isFavourite = true
         }
     }
 }
 
 struct BookDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        BookDetailView(title: "Test", image: "cover2", isFavourite: false, rating: 3, star: "star")
+        let model = BookModel()
+        BookDetailView(book: model.books[0])
     }
 }

@@ -16,7 +16,7 @@ struct HomeView: View {
             ScrollView {
                 LazyVStack (spacing: 40) {
                     ForEach(model.books) {book in
-                        BookViewRow(id: book.id, title: book.title, author: book.author, isFavourite: book.isFavourite, currentPage: book.currentPage, rating: book.rating, content: book.content)
+                        BookViewRow(book: model.books[book.id-1])
                     }
                 }
                 .padding(.top, 20)

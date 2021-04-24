@@ -9,13 +9,7 @@ import SwiftUI
 
 struct BookViewRow: View {
     
-    var id: Int
-    var title: String
-    var author: String
-    var isFavourite: Bool
-    var currentPage: Int
-    var rating: Int
-    var content: [String]
+    @State var book:Book
     
     var body: some View {
         
@@ -27,20 +21,23 @@ struct BookViewRow: View {
                 .shadow(radius: 20)
             
             VStack (alignment: .leading){
-                Text(title)
+                Text(book.title)
                     .font(.title)
                     .bold()
                     .padding(5)
-                Text(author)
+                Text(book.author)
                     .italic()
                     .font(.body)
-                    .padding(.horizontal, 5)
-                Image("cover" + String(id))
-                    .resizable()
-                    .scaledToFit()
-                    .padding([.horizontal,.bottom], 10)
-                    .frame(width: 320, height: 380)
-                    
+                    .padding(.horizontal, 10)
+                NavigationLink(
+                    destination: BookDetailView(book: book),
+                    label: {
+                        Image("cover" + String(book.id))
+                            .resizable()
+                            .scaledToFit()
+                            .padding([.horizontal,.bottom], 10)
+                            .frame(width: 320, height: 380)
+                    })
             }
             .frame(width: 350, height: 500, alignment: .center)
         }
@@ -50,6 +47,8 @@ struct BookViewRow: View {
 
 struct BookViewRow_Previews: PreviewProvider {
     static var previews: some View {
-        BookViewRow(id: 2, title: "Test název", author: "Já", isFavourite: false, currentPage: 1, rating: 3, content:["Strana 1","Strana 2"])
+        
+        let model = BookModel()
+        BookViewRow(book: model.books[0])
     }
 }
