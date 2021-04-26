@@ -9,42 +9,37 @@ import SwiftUI
 
 struct BookDetailView: View {
     
-    @State var book:Book
+    @EnvironmentObject var model: BookModel
+    @State private var rating = 2
+    var book: Book
     
     var body: some View {
         VStack (spacing: 25){
             Text("Read Now!")
                 .font(.title)
-            //Navigation Link
+            NavigationLink(
+                destination: BookContentView(book: book),
+                label: {
+                    Image("cover\(book.id)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200)
+                })
             
-            Image("cover\(book.id)")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200)
-                
             Text("Mark for later!")
             
             Button(action: {
-                checkIfRated()
-            }, label: {
-                if book.isFavourite == true {
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 30)
-                    .foregroundColor(.yellow)
-                }
-                else {
-                    Image(systemName: "star")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30)
-                        .foregroundColor(.yellow)
-                }
-            })
+                model.updateFavourite(forId: book.id)
+            }) {Image(systemName: book.isFavourite ? "star.fill" : "star")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30)
+                .foregroundColor(.yellow)
+            }
+                
             
             Text("Rate \(book.title)")
-            Picker("Rate", selection: $book.rating) {
+            Picker("Rate", selection: $rating) {
                 Text("1").tag(1)
                 Text("2").tag(2)
                 Text("3").tag(3)
@@ -53,16 +48,11 @@ struct BookDetailView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .frame(width: 300)
+            .onChange(of: rating, perform: { value in
+                model.updateRating(forId: book.id, rating: rating)
+            })
         }
-    }
-    func checkIfRated() {
-        // Nefunguje - proč?
-        if book.isFavourite {
-            book.isFavourite = false
-        }
-        else {
-            book.isFavourite = true
-        }
+        .onAppear {rating = book.rating}
     }
 }
 

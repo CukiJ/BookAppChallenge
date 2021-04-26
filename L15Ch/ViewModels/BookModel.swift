@@ -39,4 +39,26 @@ class BookModel: ObservableObject {
         
         
     }
+    
+    // Update specified book's favourite status
+    func updateFavourite(forId: Int) {
+        if let index = books.firstIndex(where: { $0.id == forId }) {
+            books[index].isFavourite.toggle()
+        }
+    }
+    
+    // Update secified book's rating
+    func updateRating(forId: Int, rating: Int) {
+        if let index = books.firstIndex(where: { $0.id == forId }) {
+            books[index].rating = rating
+        }
+    }
+    
+    // Update specified book's page
+    func updatePage(forId: Int, page: Int) {
+        if let index = books.firstIndex(where: { $0.id == forId }) {
+            books[index].currentPage = page
+        }
+    }
+    
 }

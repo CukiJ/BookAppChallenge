@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BookViewRow: View {
     
-    @State var book:Book
+    @EnvironmentObject var model: BookModel
+    var book: Book
     
     var body: some View {
         

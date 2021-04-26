@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		899D4D382636DB5D00CC554D /* BookContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D4D372636DB5D00CC554D /* BookContentView.swift */; };
 		89B2B64C2622ECD300849290 /* L15ChApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B64B2622ECD300849290 /* L15ChApp.swift */; };
 		89B2B64E2622ECD300849290 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B64D2622ECD300849290 /* HomeView.swift */; };
 		89B2B6502622ECD400849290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89B2B64F2622ECD400849290 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		899D4D372636DB5D00CC554D /* BookContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContentView.swift; sourceTree = "<group>"; };
 		89B2B6482622ECD300849290 /* L15Ch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = L15Ch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B2B64B2622ECD300849290 /* L15ChApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L15ChApp.swift; sourceTree = "<group>"; };
 		89B2B64D2622ECD300849290 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				89B2B64D2622ECD300849290 /* HomeView.swift */,
 				89B2B66A2622F6E200849290 /* BookViewRow.swift */,
 				89E98B552632DADD00E31F57 /* BookDetailView.swift */,
+				899D4D372636DB5D00CC554D /* BookContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89B2B64E2622ECD300849290 /* HomeView.swift in Sources */,
+				899D4D382636DB5D00CC554D /* BookContentView.swift in Sources */,
 				89B2B64C2622ECD300849290 /* L15ChApp.swift in Sources */,
 				89B2B6682622EF2C00849290 /* BookModel.swift in Sources */,
 				89B2B66B2622F6E200849290 /* BookViewRow.swift in Sources */,
